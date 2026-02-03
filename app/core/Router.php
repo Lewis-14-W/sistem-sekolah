@@ -1,30 +1,54 @@
 <?php
+
 namespace App\Core;
+
+use App\Controllers\StudentControllers;
 
 Class Router 
 { 
 
+    private array $routes = [];
+
+    public function add(string $method, string $uri,  string $controller, string $function)
+    {
+        $this->routes[] = [
+            'method' => $method,
+            'uri' => $uri,
+            'controller' => $controller,
+            'function' => $function,
+        ];
+    }
+    
     public function run()
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-        if ($method == 'GET' && $uri == '/students') {
-            require_once './app/controllers/StudentsController.php';
-            $controller = new StudentController();
-            $controller->index();
+
+        foreach ($this->routes as $route) {
+            $pattern = str_replace(
+                '{id}',
+                '([0-9]+)',
+                $route['uri']
+        );
+        $pattern = '#^'. $pattern . '$#';
+        // /students/{id} => /st8udents/#^([0-9]+)$# = /students/1
+
+        if(preg_match($pattern, $uri, $matches)) {
+            array_shift($matches);
+
+            require_once './app/controllers/' . $route ['controller'] . '.php'; 
+            
+            $controllerClass = 'App\\Controllers\\' . $route["controller"];
+            $controller = new $controllerClass();
+            $function = $route['function'];
+
+            call_user_func_array([$controller, $function], $matches);
             return;
-
         }
+    }
 
-        if ($method == 'GET' && $uri == '/students/create') {
-            require_once './app/controllers/StudentsController.php';
-            $controller = new StudentController();
-            $controller->create();
-            return;
-        }
-
-        http_response_code();
+    http_response_code();
         echo '<h1>404 - Page Not Found</h1>';
     }
 
