@@ -21,9 +21,9 @@
                 <!-- Card Header Start -->
                  <div class="bg-white shadow-md rounded-lg p-4">
                     <h1 class="text-2xl font-bold">Tambah Siswa</h1>
-                    <p>Menambahkan siswa ke dalam sistem</p>
+                    <p>Menampilkan daftar siswa yang terdaftar</p>
                  </div>
-                 <!-- Card Header End -->
+                <!-- Card Header End -->
         </div>
 
         <!-- Card Content Start -->
