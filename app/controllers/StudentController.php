@@ -2,13 +2,18 @@
 namespace App\Controllers;
 
 require_once '../app/core/Controller.php';
-
+require_once '../app/models/Student.php';
 use App\Core\Controller;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
     public function index ()
     {
+        $studentModel = new Student();
+        $studenta = $studentModel->getStudents();
+        print_r($studenta);
+        
         $this->view('students.index');
     }
 
