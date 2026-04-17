@@ -11,10 +11,11 @@ class StudentController extends Controller
     public function index ()
     {
         $studentModel = new Student();
-        $studenta = $studentModel->getStudents();
-        print_r($studenta);
+        $students = $studentModel->getStudents();
         
-        $this->view('students.index');
+        $this->view('students.index', [
+            'students' => $students
+        ]);
     }
 
     public function create () 
