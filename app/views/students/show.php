@@ -9,22 +9,22 @@
         <div class="p-4 grid grid-cols-2 gap-4">
             <div class="space-y-2">
                 <label class="block font-bold" for="">Nama</label>
-                <input class="w-full border rounded-lg py=2 px=4" type="text" name="name" id="name"
+                <input value = "<?= $student['name'] ?>" class="w-full border rounded-lg py=2 px=4" type="text" name="name" id="name"
                     placeholder="Masukkan Nama" readonly>
             </div>
             <div class="space-y-2">
                 <label class="block font-bold" for="nis">NIS</label>
-                <input class="w-full border rounded-lg py=2 px=4" type="text" name="nis" id="nis"
+                <input value = "<?= $student['nis'] ?>" class="w-full border rounded-lg py=2 px=4" type="text" name="nis" id="nis"
                     placeholder="Masukkan NIS" readonly>
             </div>
             <div class="space-y-2">
                 <label class="block font-bold" for="kelas">Kelas</label>
-                <input class="w-full border rounded-lg py=2 px=4" type="text" name="kelas" id="kelas"
+                <input value="<?= $student['class']?>" class="w-full border rounded-lg py=2 px=4" type="text" name="kelas" id="kelas"
                     placeholder="Masukkan Kelas" readonly>
             </div>
             <div class="space-y-2">
                 <label class="block font-bold" for="phone-number">Nomor Telepon</label>
-                <input class="w-full border rounded-lg py=2 px=4" type="text" name="phone-number" id="phone-number"
+                <input value = "<?= $student['phone_number']?>"class="w-full border rounded-lg py=2 px=4" type="text" name="phone-number" id="phone-number"
                     placeholder="Masukkan No Telepon" readonly>
             </div>
             <div class="flex justify-end gap-4 col-span-2">

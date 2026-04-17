@@ -25,6 +25,16 @@ class Student extends Database
 
         return $students;
     }
-}
 
-?>
+    //Menampilkan detail Siswa
+    public function getStudent(int $id)
+    {
+        $query = "SELECT * FROM {$this->table} WHERE id = ?";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+}
