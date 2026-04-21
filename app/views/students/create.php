@@ -6,7 +6,7 @@
     </div>
     <!-- Card Header End -->
     <div class="bg-white shadow rounded-lg">
-        <form action="" class="p-4 grid grid-cols-2 gap-4">
+        <form action="/students" method="POST" class="p-4 grid grid-cols-2 gap-4">
             <div class="space-y-2">
                 <label class="block font-bold" for="">Nama</label>
                 <input class="w-full border rounded-lg py=2 px=4" type="text" name="name" id="name"
